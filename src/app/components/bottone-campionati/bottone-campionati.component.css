@@ -1,0 +1,17 @@
+.space-around{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img{
+    height: 100%;
+    width: 10px;
+    align-items: center;
+}
+
+hr{
+    border-color: black;
+    border-width: 2px;
+}
+
