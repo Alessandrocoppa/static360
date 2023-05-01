@@ -1,0 +1,21 @@
+.footer{
+    height: 50px;;
+    padding: 15px;
+    /* white-space: pre; non usare */
+}
+.footer a{
+    color: #f1faee;
+}
+
+.posizione-2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

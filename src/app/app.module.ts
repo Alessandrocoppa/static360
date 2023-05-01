@@ -11,7 +11,8 @@ import { SerieAComponent } from './pages/serie-a/serie-a.component';
 import { PremierLeagueComponent } from './pages/premier-league/premier-league.component';
 import { LaLigaComponent } from './pages/la-liga/la-liga.component';
 import { BundesligaComponent } from './pages/bundesliga/bundesliga.component';
-import { Ligue1Component } from './pages/ligue1/ligue1.component'
+import { Ligue1Component } from './pages/ligue1/ligue1.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Ligue1Component } from './pages/ligue1/ligue1.component'
     PremierLeagueComponent,
     LaLigaComponent,
     BundesligaComponent,
-    Ligue1Component
+    Ligue1Component,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
