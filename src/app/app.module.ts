@@ -12,7 +12,9 @@ import { PremierLeagueComponent } from './pages/premier-league/premier-league.co
 import { LaLigaComponent } from './pages/la-liga/la-liga.component';
 import { BundesligaComponent } from './pages/bundesliga/bundesliga.component';
 import { Ligue1Component } from './pages/ligue1/ligue1.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FooterComponent } from './components/footer/footer.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

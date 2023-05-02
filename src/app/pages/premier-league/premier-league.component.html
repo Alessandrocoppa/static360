@@ -1,1 +1,73 @@
-<p>premier-league works!</p>
+<div class="row no-gutters col-10">
+    {{classifica.name}} 
+    <img [src]="classifica.logo">
+    {{classifica.country}}
+    <img [src]="classifica.flag">
+</div>
+
+<table *ngIf="squadre.length > 0" mat-table [dataSource]="squadre">
+    
+         <ng-container matColumnDef="posizione">
+            <th mat-header-cell *matHeaderCellDef>POSIZIONE</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.rank}}
+            </td>
+        </ng-container> 
+        <ng-container matColumnDef="squadra">
+            <th mat-header-cell *matHeaderCellDef>SQUADRA</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.team.name}} <img [src]="squadra.team.logo">
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="punti">
+            <th mat-header-cell *matHeaderCellDef>PTS</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.points}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="pg">
+            <th mat-header-cell *matHeaderCellDef>PG</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.played}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="vittorie">
+            <th mat-header-cell *matHeaderCellDef>W</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.win}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="pareggi">
+            <th mat-header-cell *matHeaderCellDef>D</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.draw}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="sconfitte">
+            <th mat-header-cell *matHeaderCellDef>L</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.lose}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="gf">
+            <th mat-header-cell *matHeaderCellDef>GF</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.goals.for}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="gs">
+            <th mat-header-cell *matHeaderCellDef>GS</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.all.goals.against}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="gd">
+            <th mat-header-cell *matHeaderCellDef>GD</th>
+            <td mat-cell *matCellDef="let squadra" >
+                {{squadra.goalsDiff}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colonneMostrate"></tr>
+        <tr mat-row *matRowDef="let row;columns :colonneMostrate"></tr>
+        
