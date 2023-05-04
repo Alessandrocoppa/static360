@@ -19,20 +19,21 @@ export class SerieAComponent {
 
 
   trovaSeriea(){
-    this.api.getSeriea().subscribe((res)=>{
+    this.api.getCampionato("135").subscribe((res)=>{
       console.log(res)
     })
   }
 
 creaClassifica(){
-  this.classifica = this.api.getFakeClassifica().response[0].league
-  console.log(this.classifica)
-
-  this.squadre = this.classifica.standings[0]
-  console.log(this.squadre)
-
-  this.punti = this.squadre[0].points
-  console.log(this.punti)
+  
+   this.api.getStandings("135").subscribe((res)=>{
+    console.log(res)
+    this.classifica = res.response[0].league
+    console.log(this.classifica)
+    this.squadre = this.classifica.standings[0]
+    console.log(this.squadre)
+  })
+  
   }
 }
 

@@ -15,20 +15,22 @@ export class PremierLeagueComponent {
   punti!: number;
   colonneMostrate:string[] = ['posizione','squadra','pg','punti','vittorie','pareggi','sconfitte','gd','gf','gs']
 
-  constructor(private api:ApiService){ this.trovaPremier(), this.creaClassifica() }
+  constructor(private api:ApiService){this.trovaPremier(), this.creaClassifica() }
 
   trovaPremier(){
-    this.api.getPremier().subscribe((res)=>{
+    this.api.getCampionato("39").subscribe((res)=>{
       console.log(res)
-      this.classifica = res.response[0].league
-      console.log(this.classifica)
     })
   }
 
   creaClassifica(){
-  this.squadre = this.classifica.standings[0]
-  console.log(this.squadre)
-
+    this.api.getStandings("39").subscribe((res)=>{
+      console.log(res)
+      this.classifica = res.response[0].league
+      console.log(this.classifica)
+      this.squadre = this.classifica.standings[0]
+      console.log(this.squadre)
+    })
   }
 
 }

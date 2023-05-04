@@ -15,6 +15,7 @@ import { Ligue1Component } from './pages/ligue1/ligue1.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatTableModule } from '@angular/material/table';
+import { MenuPaginaComponent } from './components/menu-pagina/menu-pagina.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatTableModule } from '@angular/material/table';
     LaLigaComponent,
     BundesligaComponent,
     Ligue1Component,
-    FooterComponent
+    FooterComponent,
+    MenuPaginaComponent
   ],
   imports: [
     BrowserModule,
