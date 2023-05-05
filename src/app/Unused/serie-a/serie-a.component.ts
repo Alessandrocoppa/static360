@@ -26,14 +26,15 @@ export class SerieAComponent {
 
 creaClassifica(){
   
-   this.api.getStandings("135").subscribe((res)=>{
-    console.log(res)
-    this.classifica = res.response[0].league
-    console.log(this.classifica)
-    this.squadre = this.classifica.standings[0]
-    console.log(this.squadre)
-  })
+  //  this.api.getStandings("135").subscribe((res)=>{
+  //   console.log(res)
+  //   this.classifica = res.response[0].league
+  //   console.log(this.classifica)
+  //   this.squadre = this.classifica.standings[0]
+  //   console.log(this.squadre)
+  // })
   
   }
+
 }
 

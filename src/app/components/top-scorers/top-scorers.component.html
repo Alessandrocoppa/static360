@@ -1,0 +1,29 @@
+<div class="col-9">
+        <table *ngIf="giocatori.length > 0" mat-table [dataSource]="giocatori">
+        
+                 <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>PLAYER</th>
+                    <td mat-cell *matCellDef="let giocatore" >
+                        {{giocatore.player.name}} <img [src]="giocatore.player.photo">
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="squadra">
+                    <th mat-header-cell *matHeaderCellDef>TEAM</th>
+                    <td mat-cell *matCellDef="let giocatore" >
+                        {{giocatore.statistics[0].team.name}} <img [src]="giocatore.statistics[0].team.logo">
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="goals">
+                    <th mat-header-cell *matHeaderCellDef>GOALS</th>
+                    <td mat-cell *matCellDef="let giocatore" >
+                        {{giocatore.statistics[0].goals.total}}
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="colonneMostrate"></tr>
+                <tr mat-row *matRowDef="let row;columns :colonneMostrate"></tr>
+            </table>
+</div>
+
+
+

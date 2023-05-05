@@ -7,15 +7,20 @@ import { HeaderComponent } from './components/header/header.component';
 import { BottoneCampionatiComponent } from './components/bottone-campionati/bottone-campionati.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
-import { SerieAComponent } from './pages/serie-a/serie-a.component';
-import { PremierLeagueComponent } from './pages/premier-league/premier-league.component';
-import { LaLigaComponent } from './pages/la-liga/la-liga.component';
-import { BundesligaComponent } from './pages/bundesliga/bundesliga.component';
-import { Ligue1Component } from './pages/ligue1/ligue1.component';
+import { SerieAComponent } from './Unused/serie-a/serie-a.component';
+import { PremierLeagueComponent } from './Unused/premier-league/premier-league.component';
+import { LaLigaComponent } from './Unused/la-liga/la-liga.component';
+import { BundesligaComponent } from './Unused/bundesliga/bundesliga.component';
+import { Ligue1Component } from './Unused/ligue1/ligue1.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatTableModule } from '@angular/material/table';
 import { MenuPaginaComponent } from './components/menu-pagina/menu-pagina.component';
+import { TopScorersComponent } from './components/top-scorers/top-scorers.component';
+import { ClassificaComponent } from './components/classifica/classifica.component';
+import { TopAssistsComponent } from './components/top-assists/top-assists.component';
+import { TopYellowCardComponent } from './components/top-yellow-card/top-yellow-card.component';
+import { TopRedCardComponent } from './components/top-red-card/top-red-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { MenuPaginaComponent } from './components/menu-pagina/menu-pagina.compon
     BundesligaComponent,
     Ligue1Component,
     FooterComponent,
-    MenuPaginaComponent
+    MenuPaginaComponent,
+    TopScorersComponent,
+    ClassificaComponent,
+    TopAssistsComponent,
+    TopYellowCardComponent,
+    TopRedCardComponent
   ],
   imports: [
     BrowserModule,

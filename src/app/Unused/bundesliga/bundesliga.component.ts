@@ -19,20 +19,20 @@ export class BundesligaComponent {
 
 
   trovaBundesliga(){
-    this.api.getCampionato("78").subscribe((res)=>{
-      console.log(res)
-    })
+    // this.api.getCampionato("78").subscribe((res)=>{
+    //   console.log(res)
+    // })
   }
 
 creaClassifica(){
   
-   this.api.getStandings("78").subscribe((res)=>{
-    console.log(res)
-    this.classifica = res.response[0].league
-    console.log(this.classifica)
-    this.squadre = this.classifica.standings[0]
-    console.log(this.squadre)
-  })
+  //  this.api.getStandings("78").subscribe((res)=>{
+  //   console.log(res)
+  //   this.classifica = res.response[0].league
+  //   console.log(this.classifica)
+  //   this.squadre = this.classifica.standings[0]
+  //   console.log(this.squadre)
+  // })
   
   }
 }

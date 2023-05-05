@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-bottone-campionati',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class BottoneCampionatiComponent {
 
-}
+  nomeCampionato!:string;
+  id!: string;
+  constructor(private activatedRoute: ActivatedRoute) { }
+  
+  }
+

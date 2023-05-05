@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { SerieAComponent } from './pages/serie-a/serie-a.component';
-import { PremierLeagueComponent } from './pages/premier-league/premier-league.component';
-import { LaLigaComponent } from './pages/la-liga/la-liga.component';
-import { BundesligaComponent } from './pages/bundesliga/bundesliga.component';
-import { Ligue1Component } from './pages/ligue1/ligue1.component';
+import { SerieAComponent } from './Unused/serie-a/serie-a.component';
+import { PremierLeagueComponent } from './Unused/premier-league/premier-league.component';
+import { LaLigaComponent } from './Unused/la-liga/la-liga.component';
+import { BundesligaComponent } from './Unused/bundesliga/bundesliga.component';
+import { Ligue1Component } from './Unused/ligue1/ligue1.component';
+import { ClassificaComponent } from './components/classifica/classifica.component';
+import { TopScorersComponent } from './components/top-scorers/top-scorers.component';
+import { TopAssistsComponent } from './components/top-assists/top-assists.component';
+import { TopYellowCardComponent } from './components/top-yellow-card/top-yellow-card.component';
 
 const routes: Routes = [
 
@@ -14,24 +18,20 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'seriea',
-    component: SerieAComponent
+    path: "classifica/:id",
+    component: ClassificaComponent
   },
   {
-    path: 'premier-league',
-    component: PremierLeagueComponent
+    path: "goalscorers/:id",
+    component: TopScorersComponent
   },
   {
-    path: 'laliga',
-    component: LaLigaComponent
+    path: "topassists/:id",
+    component: TopAssistsComponent
   },
   {
-    path: 'bundesliga',
-    component: BundesligaComponent
-  },
-  {
-    path: 'ligue1',
-    component: Ligue1Component
+    path: "yellowcard/:id",
+    component: TopYellowCardComponent
   }
 
 ];

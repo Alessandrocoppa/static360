@@ -1,0 +1,15 @@
+img{
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.campionato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.col-9{
+    float: right;
+}
