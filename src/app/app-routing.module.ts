@@ -10,6 +10,7 @@ import { ClassificaComponent } from './components/classifica/classifica.componen
 import { TopScorersComponent } from './components/top-scorers/top-scorers.component';
 import { TopAssistsComponent } from './components/top-assists/top-assists.component';
 import { TopYellowCardComponent } from './components/top-yellow-card/top-yellow-card.component';
+import { TopRedCardComponent } from './components/top-red-card/top-red-card.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: "yellowcard/:id",
     component: TopYellowCardComponent
+  },
+  {
+    path: "redcard/:id",
+    component: TopRedCardComponent
   }
 
 ];

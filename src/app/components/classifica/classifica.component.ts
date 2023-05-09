@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Classifica } from 'src/app/interfaces/classifica';
 import { squadre } from 'src/app/interfaces/squadre';
 import { ApiService } from 'src/app/services/api.service';
+import { IdcampionatoService } from 'src/app/services/idcampionato.service';
 
 @Component({
   selector: 'app-classifica',
   templateUrl: './classifica.component.html',
   styleUrls: ['./classifica.component.css']
 })
-export class ClassificaComponent implements OnInit{
+export class ClassificaComponent{
 
   loading:boolean = true
   id!:string
@@ -19,11 +20,12 @@ export class ClassificaComponent implements OnInit{
   punti!: number;
   colonneMostrate:string[] = ['posizione','squadra','pg','punti','vittorie','pareggi','sconfitte','gd','gf','gs']
 
-  constructor(private api:ApiService, private route:ActivatedRoute){ }
+  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato: IdcampionatoService){ this.trovaID(), this.creaFakeClassifica()}
 
-  ngOnInit() {
+  public trovaID() {
     this.route.params.subscribe(p => {
       this.id = p['id'];
+      this.idCampionato.id = this.id
       if(this.id == "135"){
         this.nomeCampionato = "seriea"
         this.loading = false
@@ -45,7 +47,7 @@ export class ClassificaComponent implements OnInit{
         this.loading = false
       }
       console.log(this.nomeCampionato)
-      this.creaFakeClassifica()
+      // this.creaFakeClassifica()
     });
   }
 
@@ -73,13 +75,4 @@ export class ClassificaComponent implements OnInit{
     
     
     
-    // trovaCampionato(){
-    //   const id = this.route.snapshot.paramMap.get('id')
-    //   if(id){
-    //     this.api.getCampionato(id).subscribe((res)=>{
-    //       console.log(res)
-    //     })
-    //   }
-      
-    // }
   }

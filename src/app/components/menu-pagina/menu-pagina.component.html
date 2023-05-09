@@ -1,14 +1,14 @@
-<div class="menu col-4 mt-5">
+<div class="menu col-3 mt-5">
     <button routerLink="/home"><b>Home</b></button>
-    <hr class="col-12">
-    <button [routerLink]="'/classifica/135'"><b>Standings</b></button>
-    <hr class="col-12">
-    <button [routerLink]="'/goalscorers/135'"><b>Goalscorer</b></button>
-    <hr class="col-12">
-    <button [routerLink]="'/topassists/135'"><b>Assistman</b></button>
-    <hr class="col-12">
-    <button [routerLink]="'/yellowcard/135'"><b>Yellow Card</b></button>
-    <hr class="col-12">
-    <span>Red Card</span>
-    <hr class="col-12">
+    <hr>
+    <button [routerLink]="'/classifica/' + idCampionato.id"><b>Standings</b></button>
+    <hr>
+    <button [routerLink]="'/goalscorers/'+ idCampionato.id"><b>Goalscorer</b></button>
+    <hr>
+    <button [routerLink]="'/topassists/'+ idCampionato.id"><b>Assistman</b></button>
+    <hr>
+    <button [routerLink]="'/yellowcard/'+ idCampionato.id"><b>Yellow Card</b></button>
+    <hr>
+    <button [routerLink]="'/redcard/'+ idCampionato.id"><b>Red Card</b></button>
+    <hr>
 </div>
