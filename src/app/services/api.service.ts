@@ -61,11 +61,11 @@ export class ApiService {
     })
   }
 
-  getYellowCard(id:string){
+  getYellowCard(id:string, season:string){
     return this.http.get<any>(this.API_URL + 'players/topyellowcards',{
       params:{
         league: id,
-        season: "2022"
+        season: season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",

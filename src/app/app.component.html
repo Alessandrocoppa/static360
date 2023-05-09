@@ -1,6 +1,11 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div class="row">
+    <div class="col-9">
+        <router-outlet></router-outlet>
+    </div>
 
-<app-menu-pagina></app-menu-pagina>
+    <app-menu-pagina *ngIf="rotta != '/home'" class="col-3"></app-menu-pagina>
+</div>
+
 
 <app-footer></app-footer> 
