@@ -14,6 +14,7 @@ export class ClassificaComponent{
 
   loading:boolean = true
   id!:string
+  season!:string 
   nomeCampionato!:string;
   classifica!:Classifica
   squadre!:squadre[] 
@@ -25,6 +26,7 @@ export class ClassificaComponent{
   public trovaID() {
     this.route.params.subscribe(p => {
       this.id = p['id'];
+      this.season = this.idCampionato.season
       this.idCampionato.id = this.id
       if(this.id == "135"){
         this.nomeCampionato = "seriea"
@@ -47,9 +49,15 @@ export class ClassificaComponent{
         this.loading = false
       }
       console.log(this.nomeCampionato)
-      // this.creaFakeClassifica()
+      this.creaFakeClassifica()
     });
   }
+
+  trovaSeason(){
+    
+      
+  }
+  
 
   creaFakeClassifica(){
     

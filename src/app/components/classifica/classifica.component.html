@@ -1,3 +1,9 @@
+<div>
+    <select season="selectSeason">
+        <option *ngFor="let sea of season">{{sea}}</option>
+     </select>
+</div>
+
 <div *ngIf="!loading" class="row no gutters ">
     <div class="campionato col-12">
         {{classifica.name}}

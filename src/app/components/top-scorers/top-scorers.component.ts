@@ -16,9 +16,11 @@ export class TopScorersComponent {
   nomeCampionato!:string;
   giocatori!:Giocatore[]
   colonneMostrate:string[] = ['nome','squadra','goals']
+  season: string;
   
   constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){
-    this.id = this.idCampionato.id, 
+    this.id = this.idCampionato.id,
+    this.season = this.idCampionato.season,
     this.creaTopScorer()}
 
   // creaTopScorer(){
