@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Classifica } from 'src/app/interfaces/classifica';
 import { squadre } from 'src/app/interfaces/squadre';
@@ -14,19 +15,31 @@ export class ClassificaComponent{
 
   loading:boolean = true
   id!:string
-  season!:string 
+  seasons!:string[]
+  season:string = "2022"
   nomeCampionato!:string;
   classifica!:Classifica
-  squadre!:squadre[] 
+  squadre:squadre[] = []
   punti!: number;
   colonneMostrate:string[] = ['posizione','squadra','pg','punti','vittorie','pareggi','sconfitte','gd','gf','gs']
+  @Output() cambioSeason: EventEmitter<any> = new EventEmitter()
+  datiTabella: any;
 
-  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato: IdcampionatoService){ this.trovaID(), this.creaFakeClassifica()}
+  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato: IdcampionatoService){ 
+    this.trovaID(), 
+    this.creaFakeClassifica(),
+    this.creaFakeSeason()}
+
+  seasonScelta(season:any){
+      this.season = season
+      this.idCampionato.season = this.season
+      this.creaFakeClassifica() 
+  }
+
 
   public trovaID() {
     this.route.params.subscribe(p => {
       this.id = p['id'];
-      this.season = this.idCampionato.season
       this.idCampionato.id = this.id
       if(this.id == "135"){
         this.nomeCampionato = "seriea"
@@ -53,10 +66,19 @@ export class ClassificaComponent{
     });
   }
 
-  trovaSeason(){
-    
-      
+  creaFakeSeason(){
+    this.seasons = this.api.getFakeSeason().response
+    console.log(this.seasons)
   }
+
+  // trovaSeason(){
+  //   this.api.getSeason().subscribe((res)=>{
+  //     console.log(res)
+  //     this.season = res.response
+  //     console.log(this.season)
+  //   })
+    
+  // }
   
 
   creaFakeClassifica(){
@@ -65,6 +87,8 @@ export class ClassificaComponent{
           console.log(this.classifica)
       
           this.squadre = this.classifica.standings[0]
+          this.squadre.sort((a, b)=>a.rank - b.rank)
+          this.datiTabella = new MatTableDataSource(this.squadre)
           console.log(this.squadre)
         }
         
@@ -72,14 +96,15 @@ export class ClassificaComponent{
   
   // creaClassifica(){
     
-    //    this.api.getStandings(this.id).subscribe((res)=>{
-      //     console.log(res)
-      //     this.classifica = res.response[0].league
-      //     console.log(this.classifica)
-      //     this.squadre = this.classifica.standings[0]
-      //     console.log(this.squadre)
-      //   })
-      //   }
+  //      this.api.getStandings().subscribe((res)=>{
+  //         console.log(res)
+  //         this.classifica = res.response[0].league
+  //         console.log(this.classifica)
+  //         this.squadre = this.classifica.standings[0]
+  //         this.datiTabella = new MatTableDataSource(this.squadre)
+  //         console.log(this.squadre)
+  //       })
+  //       }
     
     
     

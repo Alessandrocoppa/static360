@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IdcampionatoService } from './idcampionato.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private idCampionato:IdcampionatoService) { }
 
   private API_URL:string = "https://v3.football.api-sports.io/"
 
@@ -22,11 +23,11 @@ export class ApiService {
     })
   }
 
-  getStandings(id:string){
+  getStandings(){
     return this.http.get<any>(this.API_URL + 'standings',{
       params:{
-        league: id,
-        season: "2022"
+        league: this.idCampionato.id,
+        season: this.idCampionato.season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",
@@ -86,6 +87,19 @@ export class ApiService {
       }
     })
   }
+
+getSeason(){
+  return this.http.get<any>(this.API_URL + 'leagues/seasons',{
+    headers:{
+      "x-rapidapi-host": "v3.football.api-sports.io",
+      "x-rapidapi-key": "6de9befcba2e078d3784aa7243cef899"
+    }
+  })
+}
+
+getFakeSeason():any{
+  return {"get":"leagues/seasons","parameters":[],"errors":[],"results":18,"paging":{"current":1,"total":1},"response":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025]}
+}
 
 getFakeSeriea(){
   

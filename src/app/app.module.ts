@@ -21,6 +21,7 @@ import { ClassificaComponent } from './components/classifica/classifica.componen
 import { TopAssistsComponent } from './components/top-assists/top-assists.component';
 import { TopYellowCardComponent } from './components/top-yellow-card/top-yellow-card.component';
 import { TopRedCardComponent } from './components/top-red-card/top-red-card.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,14 +40,15 @@ import { TopRedCardComponent } from './components/top-red-card/top-red-card.comp
     ClassificaComponent,
     TopAssistsComponent,
     TopYellowCardComponent,
-    TopRedCardComponent
+    TopRedCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

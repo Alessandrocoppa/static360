@@ -1,7 +1,7 @@
 <div>
-    <select season="selectSeason">
-        <option *ngFor="let sea of season">{{sea}}</option>
-     </select>
+    <mat-select [value]="season" (valueChange)="seasonScelta($event)">
+        <mat-option [value]="sea" *ngFor="let sea of seasons">{{sea}}</mat-option>
+     </mat-select>
 </div>
 
 <div *ngIf="!loading" class="row no gutters ">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-12">
-        <table *ngIf="squadre.length > 0" mat-table [dataSource]="squadre">
+        <table *ngIf="squadre.length > 0" mat-table [dataSource]="datiTabella">
         
                  <ng-container matColumnDef="posizione">
                     <th mat-header-cell *matHeaderCellDef>POSIZIONE</th>
