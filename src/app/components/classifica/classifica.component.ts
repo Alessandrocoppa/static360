@@ -27,13 +27,13 @@ export class ClassificaComponent{
 
   constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato: IdcampionatoService){ 
     this.trovaID(), 
-    this.creaFakeClassifica(),
+    this.creaClassifica(),
     this.creaFakeSeason()}
 
   seasonScelta(season:any){
       this.season = season
       this.idCampionato.season = this.season
-      this.creaFakeClassifica() 
+      this.creaClassifica() 
   }
 
 
@@ -62,7 +62,7 @@ export class ClassificaComponent{
         this.loading = false
       }
       console.log(this.nomeCampionato)
-      this.creaFakeClassifica()
+      this.creaClassifica()
     });
   }
 
@@ -81,7 +81,7 @@ export class ClassificaComponent{
   // }
   
 
-  creaFakeClassifica(){
+  creaClassifica(){
     
     this.classifica = this.api.getFakeSeriea().response[0].league
           console.log(this.classifica)

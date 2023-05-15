@@ -40,9 +40,9 @@ export class TopScorersComponent {
   //   this.giocatori = res.response
   //     console.log(this.giocatori)
   //     this.datiTabella = new MatTableDataSource(this.giocatori)
-  //         this.goals.sort((a:any, b:any)=>a.total - b.total)
-  //         this.datiTabella = new MatTableDataSource(this.giocatori)
-  //         console.log(this.giocatori)
+  //         // this.goals.sort((a:any, b:any)=>a.total - b.total)
+  //         // this.datiTabella = new MatTableDataSource(this.giocatori)
+  //         // console.log(this.giocatori)
   //   })
   // }
 
@@ -54,6 +54,7 @@ export class TopScorersComponent {
   creaTopScorer(){
   this.giocatori = this.api.getFakeScorer().response
     console.log(this.giocatori)
+    this.datiTabella = new MatTableDataSource(this.giocatori)
   }
 }
 

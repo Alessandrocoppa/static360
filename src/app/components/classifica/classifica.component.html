@@ -4,7 +4,7 @@
      </mat-select>
 </div>
 
-<div *ngIf="!loading" class="row no gutters ">
+<div *ngIf="!loading" class="row no-gutters ">
     <div class="campionato col-12">
         {{classifica.name}}
         <img [src]="classifica.logo">
@@ -18,61 +18,61 @@
                  <ng-container matColumnDef="posizione">
                     <th mat-header-cell *matHeaderCellDef>POSIZIONE</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.rank}}
+                        {{squadra.rank | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="squadra">
                     <th mat-header-cell *matHeaderCellDef>SQUADRA</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.team.name}} <img [src]="squadra.team.logo">
+                        {{squadra.team.name | riduciClassifica}} <img [src]="squadra.team.logo">
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="punti">
                     <th mat-header-cell *matHeaderCellDef>PTS</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.points}}
+                        {{squadra.points | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="pg">
                     <th mat-header-cell *matHeaderCellDef>PG</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.played}}
+                        {{squadra.all.played | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="vittorie">
                     <th mat-header-cell *matHeaderCellDef>W</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.win}}
+                        {{squadra.all.win | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="pareggi">
                     <th mat-header-cell *matHeaderCellDef>D</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.draw}}
+                        {{squadra.all.draw | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="sconfitte">
                     <th mat-header-cell *matHeaderCellDef>L</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.lose}}
+                        {{squadra.all.lose | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="gf">
                     <th mat-header-cell *matHeaderCellDef>GF</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.goals.for}}
+                        {{squadra.all.goals.for | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="gs">
                     <th mat-header-cell *matHeaderCellDef>GS</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.all.goals.against}}
+                        {{squadra.all.goals.against | riduciClassifica}}
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="gd">
                     <th mat-header-cell *matHeaderCellDef>GD</th>
                     <td mat-cell *matCellDef="let squadra" >
-                        {{squadra.goalsDiff}}
+                        {{squadra.goalsDiff | riduciClassifica}}
                     </td>
                 </ng-container>
         

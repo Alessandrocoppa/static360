@@ -37,6 +37,7 @@ export class TopAssistsComponent {
   creaTopAssists(){
     this.giocatori = this.api.getFakeAssists().response
       console.log(this.giocatori)
+      this.datiTabella = new MatTableDataSource(this.giocatori)
     }
   
   creaFakeSeason(){
