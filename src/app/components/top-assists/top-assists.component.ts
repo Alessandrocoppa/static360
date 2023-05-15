@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Giocatore } from 'src/app/interfaces/giocatore';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,30 +14,43 @@ export class TopAssistsComponent {
 
   loading:boolean = true
   id!:string
-  season!:string
+  season:string = "2022"
   nomeCampionato!:string;
   giocatori!:Giocatore[]
   colonneMostrate:string[] = ['nome','squadra','assists']
+  seasons!:string[]
+  datiTabella: any;
   
   constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){
     this.id = this.idCampionato.id,
-    this.season = this.idCampionato.season
+    this.season = this.idCampionato.season,
+    this.creaFakeSeason(),
     this.creaTopAssists()
   }
 
- 
+  seasonScelta(season:any){
+    this.season = season
+    this.idCampionato.season = this.season
+    this.creaTopAssists() 
+}
 
   creaTopAssists(){
     this.giocatori = this.api.getFakeAssists().response
       console.log(this.giocatori)
     }
   
+  creaFakeSeason(){
+      this.seasons = this.api.getFakeSeason().response
+      console.log(this.seasons)
+    }
+  
 
 //   creaTopAssists(){
-//   this.api.getTopAssists(this.id).subscribe((res)=>{
+//   this.api.getTopAssists().subscribe((res)=>{
 //     console.log(res)
 //   this.giocatori = res.response
 //     console.log(this.giocatori)
+//     this.datiTabella = new MatTableDataSource(this.giocatori)
 //   })
 // }
   }

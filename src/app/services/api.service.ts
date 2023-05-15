@@ -36,11 +36,11 @@ export class ApiService {
     })
   }
 
-  getTopScorer(id:string, season:string){
+  getTopScorer(){
     return this.http.get<any>(this.API_URL + 'players/topscorers',{
       params:{
-        league: id,
-        season: season
+        league: this.idCampionato.id,
+        season: this.idCampionato.season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",
@@ -49,11 +49,11 @@ export class ApiService {
     })
   }
 
-  getTopAssists(id:string){
+  getTopAssists(){
     return this.http.get<any>(this.API_URL + 'players/topassists',{
       params:{
-        league: id,
-        season: "2022"
+        league: this.idCampionato.id,
+        season: this.idCampionato.season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",
@@ -62,11 +62,11 @@ export class ApiService {
     })
   }
 
-  getYellowCard(id:string){
+  getYellowCard(){
     return this.http.get<any>(this.API_URL + 'players/topyellowcards',{
       params:{
-        league: id,
-        season: "2022"
+        league: this.idCampionato.id,
+        season: this.idCampionato.season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",
@@ -75,11 +75,11 @@ export class ApiService {
     })
   }
 
-  getRedCard(id:string){
+  getRedCard(){
     return this.http.get<any>(this.API_URL + 'players/topredcards',{
       params:{
-        league: id,
-        season: "2022"
+        league: this.idCampionato.id,
+        season: this.idCampionato.season
       },
       headers:{
         "x-rapidapi-host": "v3.football.api-sports.io",

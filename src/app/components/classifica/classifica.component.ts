@@ -102,6 +102,8 @@ export class ClassificaComponent{
   //         console.log(this.classifica)
   //         this.squadre = this.classifica.standings[0]
   //         this.datiTabella = new MatTableDataSource(this.squadre)
+  //         this.squadre.sort((a, b)=>a.rank - b.rank)
+  //         this.datiTabella = new MatTableDataSource(this.squadre)
   //         console.log(this.squadre)
   //       })
   //       }

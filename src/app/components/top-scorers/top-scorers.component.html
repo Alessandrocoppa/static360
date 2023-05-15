@@ -1,5 +1,12 @@
 <div>
-        <table *ngIf="giocatori.length > 0" mat-table [dataSource]="giocatori">
+    <mat-select [value]="season" (valueChange)="seasonScelta($event)">
+        <mat-option [value]="sea" *ngFor="let sea of seasons">{{sea}}</mat-option>
+     </mat-select>
+</div>
+
+
+<div>
+        <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella">
         
                  <ng-container matColumnDef="nome">
                     <th mat-header-cell *matHeaderCellDef>PLAYER</th>
