@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RiduciClassificaPipe implements PipeTransform {
 
-  transform(value: string, max:number = 10): string {
-    if(value.length > max )
+  transform(value: number, max:number = 10): number {
+    if(value > max )
       return value.slice(0,max)+"..."
     else
       return value;
