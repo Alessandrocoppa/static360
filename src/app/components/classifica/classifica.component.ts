@@ -81,32 +81,32 @@ export class ClassificaComponent{
   // }
   
 
-  creaClassifica(){
-    
-    this.classifica = this.api.getFakeSeriea().response[0].league
-          console.log(this.classifica)
-      
-          this.squadre = this.classifica.standings[0]
-          this.squadre.sort((a, b)=>a.rank - b.rank)
-          this.datiTabella = new MatTableDataSource(this.squadre)
-          console.log(this.squadre)
-        }
-        
-
-  
   // creaClassifica(){
     
-  //      this.api.getStandings().subscribe((res)=>{
-  //         console.log(res)
-  //         this.classifica = res.response[0].league
+  //   this.classifica = this.api.getFakeSeriea().response[0].league
   //         console.log(this.classifica)
+      
   //         this.squadre = this.classifica.standings[0]
-  //         this.datiTabella = new MatTableDataSource(this.squadre)
   //         this.squadre.sort((a, b)=>a.rank - b.rank)
   //         this.datiTabella = new MatTableDataSource(this.squadre)
   //         console.log(this.squadre)
-  //       })
   //       }
+        
+
+  
+  creaClassifica(){
+    
+       this.api.getStandings(this.idCampionato.id).subscribe((res)=>{
+          console.log(res)
+          this.classifica = res.response[0].league
+          console.log(this.classifica)
+          this.squadre = this.classifica.standings[0]
+          this.datiTabella = new MatTableDataSource(this.squadre)
+          this.squadre.sort((a, b)=>a.rank - b.rank)
+          this.datiTabella = new MatTableDataSource(this.squadre)
+          console.log(this.squadre)
+        })
+        }
     
     
     

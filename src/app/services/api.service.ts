@@ -23,10 +23,10 @@ export class ApiService {
     })
   }
 
-  getStandings(){
+  getStandings(id:string){
     return this.http.get<any>(this.API_URL + 'standings',{
       params:{
-        league: this.idCampionato.id,
+        league: id,
         season: this.idCampionato.season
       },
       headers:{

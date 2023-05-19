@@ -22,7 +22,7 @@ import { TopAssistsComponent } from './components/top-assists/top-assists.compon
 import { TopYellowCardComponent } from './components/top-yellow-card/top-yellow-card.component';
 import { TopRedCardComponent } from './components/top-red-card/top-red-card.component';
 import { MatSelectModule } from '@angular/material/select';
-import { RiduciClassificaPipe } from './pipes/riduci-classifica.pipe';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { RiduciClassificaPipe } from './pipes/riduci-classifica.pipe';
     TopAssistsComponent,
     TopYellowCardComponent,
     TopRedCardComponent,
-    RiduciClassificaPipe,
   ],
   imports: [
     BrowserModule,
