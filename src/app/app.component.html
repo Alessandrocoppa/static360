@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-bottone-campionati></app-bottone-campionati>
 <div class="row no-gutters">
-    <div class="col-9">
+    <div [ngClass]="rotta != '/home'? 'col-9':'col-12'">
         <router-outlet></router-outlet>
     </div>
 

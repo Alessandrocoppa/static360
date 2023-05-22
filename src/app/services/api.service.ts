@@ -36,10 +36,10 @@ export class ApiService {
     })
   }
 
-  getTopScorer(){
+  getTopScorer(id:string){
     return this.http.get<any>(this.API_URL + 'players/topscorers',{
       params:{
-        league: this.idCampionato.id,
+        league: id,
         season: this.idCampionato.season
       },
       headers:{
@@ -49,10 +49,10 @@ export class ApiService {
     })
   }
 
-  getTopAssists(){
+  getTopAssists(id:string){
     return this.http.get<any>(this.API_URL + 'players/topassists',{
       params:{
-        league: this.idCampionato.id,
+        league: id,
         season: this.idCampionato.season
       },
       headers:{
