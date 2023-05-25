@@ -18,6 +18,7 @@ export class HomeComponent {
   seasons!:string[]
   season:string = "2022"
   giocatori!:Giocatore[]
+  loading:boolean[] = [true, true, true, true, true, true, true, true, true] 
   classifica!:Classifica
   squadre:squadre[] = []
   colonneMostrate:string[] = ['posizione','squadra','pg','punti']
@@ -35,11 +36,12 @@ export class HomeComponent {
   datiTabella22: any;
   datiTabella31: any;
   datiTabella32: any;
+  giocatoriTagliati: boolean = false;
 
   constructor(private api:ApiService){  
     this.creaSerieA(),
-    this.creaTopScorerIT(),
-    this.creaTopAssistsIT(),
+    // this.creaTopScorerIT(),
+    // this.creaTopAssistsIT(),
     this.creaPremier(),
     this.creaTopScorerEN(),
     this.creaTopAssistsEN(),
@@ -58,21 +60,25 @@ export class HomeComponent {
             this.squadre.sort((a, b)=>a.rank - b.rank)
             this.datiTabella = new MatTableDataSource(this.squadre)
             console.log(this.squadre)
+            this.loading[0] = false
           }
 
-          creaTopScorerIT(){
-            this.giocatori = this.api.getFakeScorer().response
-              console.log(this.giocatori)
-              this.giocatori = this.giocatori.slice(0,4)
-              this.datiTabella11 = new MatTableDataSource(this.giocatori)
-            }
+    //       creaTopScorerIT(){
+    //         this.giocatori = this.api.getFakeScorer().response
+    //           console.log(this.giocatori)
+    //           this.giocatori = this.giocatori.slice(0,4)
+    //           this.datiTabella11 = new MatTableDataSource(this.giocatori)
+    //         this.loading[1] = false
 
-          creaTopAssistsIT(){
-              this.giocatori = this.api.getFakeAssists().response
-                console.log(this.giocatori)
-                this.giocatori = this.giocatori.slice(0,4)
-                this.datiTabella12 = new MatTableDataSource(this.giocatori)
-              }
+    //         }
+
+    //       creaTopAssistsIT(){
+    //           this.giocatori = this.api.getFakeAssists().response
+    //             console.log(this.giocatori)
+    //             this.giocatori = this.giocatori.slice(0,4)
+    //             this.datiTabella12 = new MatTableDataSource(this.giocatori)
+    //             this.loading[2] = false
+    //           }
 
     // creaSerieA(){  
     //   this.api.getStandings("135").subscribe((res)=>{
@@ -121,6 +127,7 @@ export class HomeComponent {
            this.squadre.sort((a, b)=>a.rank - b.rank)
            this.datiTabella2 = new MatTableDataSource(this.squadre)
            console.log(this.squadre)
+           this.loading[3] = false
          })
          }
 
@@ -131,6 +138,8 @@ export class HomeComponent {
           console.log(this.giocatori)
           this.giocatori = this.giocatori.slice(0,4)
           this.datiTabella21 = new MatTableDataSource(this.giocatori)
+          this.loading[4] = false
+
         })
       }
     
@@ -141,6 +150,8 @@ export class HomeComponent {
             console.log(this.giocatori)
             this.giocatori = this.giocatori.slice(0,4)
             this.datiTabella22 = new MatTableDataSource(this.giocatori)
+            this.loading[5] = false
+
           })
         }
 
@@ -153,6 +164,8 @@ export class HomeComponent {
              this.squadre = this.classifica.standings[0]
              this.squadre = this.squadre.slice(0,4)
              this.datiTabella3 = new MatTableDataSource(this.squadre)
+            this.loading[6] = false
+
            })
            }
 
@@ -163,6 +176,8 @@ export class HomeComponent {
               console.log(this.giocatori)
               this.giocatori = this.giocatori.slice(0,4)
               this.datiTabella31 = new MatTableDataSource(this.giocatori)
+            this.loading[7] = false
+
             })
           }
         
@@ -173,8 +188,13 @@ export class HomeComponent {
                 console.log(this.giocatori)
                 this.giocatori = this.giocatori.slice(0,4)
                 this.datiTabella32 = new MatTableDataSource(this.giocatori)
+            this.loading[8] = false
+
               })
             }
-    
-           
+            
+            tagliaGiocatori(){
+              this.giocatori = this.giocatori.slice(0,4)
+              this.giocatoriTagliati = true
+            }
 }

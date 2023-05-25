@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Giocatore } from 'src/app/interfaces/giocatore';
@@ -10,7 +10,7 @@ import { IdcampionatoService } from 'src/app/services/idcampionato.service';
   templateUrl: './top-assists.component.html',
   styleUrls: ['./top-assists.component.css']
 })
-export class TopAssistsComponent {
+export class TopAssistsComponent implements OnInit{
 
   loading:boolean = true
   id!:string
@@ -20,8 +20,11 @@ export class TopAssistsComponent {
   colonneMostrate:string[] = ['nome','squadra','assists']
   seasons!:string[]
   datiTabella: any;
+  @Input() mostraMeno: boolean = false
   
-  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){
+  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){ }
+
+  ngOnInit(){
     this.id = this.idCampionato.id,
     this.season = this.idCampionato.season,
     this.creaFakeSeason(),
@@ -37,12 +40,20 @@ export class TopAssistsComponent {
   creaTopAssists(){
     this.giocatori = this.api.getFakeAssists().response
       console.log(this.giocatori)
+      if(this.mostraMeno == true){
+        this.tagliaGiocatori()
+      }
       this.datiTabella = new MatTableDataSource(this.giocatori)
     }
   
   creaFakeSeason(){
       this.seasons = this.api.getFakeSeason().response
       console.log(this.seasons)
+    }
+
+    tagliaGiocatori(){
+      this.giocatori = this.giocatori.slice(0,4)
+      this.mostraMeno = true
     }
   
 

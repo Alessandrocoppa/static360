@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Giocatore } from 'src/app/interfaces/giocatore';
@@ -10,7 +10,7 @@ import { IdcampionatoService } from 'src/app/services/idcampionato.service';
   templateUrl: './top-scorers.component.html',
   styleUrls: ['./top-scorers.component.css']
 })
-export class TopScorersComponent {
+export class TopScorersComponent implements OnInit{
 
   loading:boolean = true
   id!:string
@@ -21,13 +21,17 @@ export class TopScorersComponent {
   seasons!:string[]
   datiTabella: any;
   goals: any;
+  @Input() mostraMeno: boolean = false
   
-  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){
-    this.id = this.idCampionato.id,
-    this.season = this.idCampionato.season,
-    this.creaFakeSeason(),
-    this.creaTopScorer()}
-
+  constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){ }
+    
+    ngOnInit(){
+      this.id = this.idCampionato.id,
+      this.season = this.idCampionato.season,
+      this.creaFakeSeason(),
+      this.creaTopScorer()
+    }
+  
     seasonScelta(season:any){
       this.season = season
       this.idCampionato.season = this.season
@@ -54,7 +58,15 @@ export class TopScorersComponent {
   creaTopScorer(){
   this.giocatori = this.api.getFakeScorer().response
     console.log(this.giocatori)
+    if(this.mostraMeno == true){
+      this.tagliaGiocatori()
+    }
     this.datiTabella = new MatTableDataSource(this.giocatori)
+}
+
+  tagliaGiocatori(){
+    this.giocatori = this.giocatori.slice(0,4)
+    this.mostraMeno = true
   }
 }
 

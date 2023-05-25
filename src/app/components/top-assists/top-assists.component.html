@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="mostraMeno == false">
     <mat-select [value]="season" (valueChange)="seasonScelta($event)">
         <mat-option [value]="sea" *ngFor="let sea of seasons">{{sea}}</mat-option>
      </mat-select>
