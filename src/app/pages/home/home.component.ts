@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Classifica } from 'src/app/interfaces/classifica';
 import { Giocatore } from 'src/app/interfaces/giocatore';
 import { squadre } from 'src/app/interfaces/squadre';
@@ -28,8 +28,6 @@ export class HomeComponent {
   squadra: any;
   datiTabella2: any;
   datiTabella3: any;
-  datiTabella4: any;
-  datiTabella5: any;
   datiTabella11: any;
   datiTabella12: any;
   datiTabella21: any;
@@ -37,11 +35,12 @@ export class HomeComponent {
   datiTabella31: any;
   datiTabella32: any;
   giocatoriTagliati: boolean = false;
+  
 
-  constructor(private api:ApiService){  
+  constructor(private api:ApiService, private idCampionato:IdcampionatoService, private router:Router){  
     this.creaSerieA(),
     // this.creaTopScorerIT(),
-    // this.creaTopAssistsIT(),
+    this.creaTopAssistsIT(),
     this.creaPremier(),
     this.creaTopScorerEN(),
     this.creaTopAssistsEN(),
@@ -63,22 +62,22 @@ export class HomeComponent {
             this.loading[0] = false
           }
 
-    //       creaTopScorerIT(){
-    //         this.giocatori = this.api.getFakeScorer().response
-    //           console.log(this.giocatori)
-    //           this.giocatori = this.giocatori.slice(0,4)
-    //           this.datiTabella11 = new MatTableDataSource(this.giocatori)
-    //         this.loading[1] = false
+          // creaTopScorerIT(){
+          //   this.giocatori = this.api.getFakeScorer().response
+          //     console.log(this.giocatori)
+          //     this.giocatori = this.giocatori.slice(0,4)
+          //     this.datiTabella11 = new MatTableDataSource(this.giocatori)
+          //   this.loading[1] = false
 
-    //         }
+          //   }
 
-    //       creaTopAssistsIT(){
-    //           this.giocatori = this.api.getFakeAssists().response
-    //             console.log(this.giocatori)
-    //             this.giocatori = this.giocatori.slice(0,4)
-    //             this.datiTabella12 = new MatTableDataSource(this.giocatori)
-    //             this.loading[2] = false
-    //           }
+          creaTopAssistsIT(){
+              this.giocatori = this.api.getFakeAssists().response
+                console.log(this.giocatori)
+                this.giocatori = this.giocatori.slice(0,4)
+                this.datiTabella12 = new MatTableDataSource(this.giocatori)
+                this.loading[2] = false
+              }
 
     // creaSerieA(){  
     //   this.api.getStandings("135").subscribe((res)=>{
@@ -95,7 +94,7 @@ export class HomeComponent {
     //    }
 
     // creaTopScorerIT(){
-    //     this.api.getTopScorer().subscribe((res)=>{
+    //     this.api.getTopScorer("135").subscribe((res)=>{
     //       console.log(res)
     //     this.giocatori = res.response
     //       console.log(this.giocatori)
@@ -196,5 +195,10 @@ export class HomeComponent {
             tagliaGiocatori(){
               this.giocatori = this.giocatori.slice(0,4)
               this.giocatoriTagliati = true
+            }
+
+            mostraAltro(rotta:string, id:string){
+              this.idCampionato.id = id
+              this.router.navigate([rotta + id])
             }
 }

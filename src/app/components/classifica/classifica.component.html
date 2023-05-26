@@ -12,7 +12,7 @@
         <img [src]="classifica.flag">
     </div>
 
-    <div class="col-12">
+    <div class="col-12" *ngIf="!loading">
         <table *ngIf="squadre.length > 0" mat-table [dataSource]="datiTabella">
         
                  <ng-container matColumnDef="posizione">

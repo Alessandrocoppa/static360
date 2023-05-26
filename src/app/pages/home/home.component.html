@@ -34,14 +34,15 @@
             <button class="btn btn-info" [routerLink]="'/classifica/135'" >Mostra Altro...</button>
     </div>
     <div class="dati col-4">
-        <app-top-scorers [mostraMeno]="true"></app-top-scorers>
-        <button class="btn btn-info" [routerLink]="'/goalscorers/135'" >Mostra Altro...</button>
+        <app-top-scorers [mostraMeno]="true" [id]="'135'"></app-top-scorers>
+        <button class="btn btn-info" (click)="mostraAltro('goalscorers/','135')" >Mostra Altro...</button>
     </div>
 
     <div class="dati col-4">
-        <app-top-assists [mostraMeno]="true"></app-top-assists>
-        <button class="btn btn-info" [routerLink]="'/topassists/135'" >Mostra Altro...</button>
+        <app-top-assists [mostraMeno]="true" [id]="'135'" ></app-top-assists>
+        <button class="btn btn-info" (click)="mostraAltro('topassists/','135')" >Mostra Altro...</button>
     </div>
+</div>
         <!-- <div class="dati col-4">
             <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella11">
         
@@ -96,8 +97,8 @@
                 </table>
                 <button class="btn btn-info" [routerLink]="'/topassists/135'" >Mostra Altro...</button>
             </div>
-    </div>
- -->
+    </div> -->
+
 
     <div class="row no-gutters">
         <span class="col-12"><b>PREMIER LEAGUE</b></span>
@@ -134,7 +135,16 @@
                 </table>
                 <button class="btn btn-info" [routerLink]="'/classifica/39'" >Mostra Altro...</button>
         </div>
-            <div class="dati col-4">
+        <div class="dati col-4">
+            <app-top-scorers [mostraMeno]="true" [id]="'39'"></app-top-scorers>
+            <button class="btn btn-info" (click)="mostraAltro('goalscorers/','39')" >Mostra Altro...</button>
+        </div>
+        <div class="dati col-4">
+            <app-top-assists [mostraMeno]="true" [id]="'39'"></app-top-assists>
+            <button class="btn btn-info" (click)="mostraAltro('topassists/','39')" >Mostra Altro...</button>
+        </div>
+    </div>
+            <!-- <div class="dati col-4">
                 <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella21">
             
                          <ng-container matColumnDef="nome">
@@ -160,8 +170,8 @@
                         <tr mat-row *matRowDef="let row;columns :colonneMostrate2"></tr>
                     </table>
                     <button class="btn btn-info" [routerLink]="'/goalscorers/39'" >Mostra Altro...</button>
-            </div>
-            <div class="dati col-4">
+            </div> -->
+            <!-- <div class="dati col-4">
                 <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella22">
             
                          <ng-container matColumnDef="nome">
@@ -188,7 +198,7 @@
                     </table>
                     <button class="btn btn-info" [routerLink]="'/topassists/39'" >Mostra Altro...</button>
                 </div>
-        </div>
+        </div> -->
 
         <div class="row no-gutters">
             <span class="col-12"><b>LA LIGA</b></span>
@@ -225,7 +235,16 @@
                     </table>
                     <button class="btn btn-info" [routerLink]="'/classifica/140'" >Mostra Altro...</button>
             </div>
-                <div class="dati col-4">
+            <div class="dati col-4">
+                <app-top-scorers [mostraMeno]="true" [id]="'140'"></app-top-scorers>
+                <button class="btn btn-info" (click)="mostraAltro('goalscorers/','135')" >Mostra Altro...</button>
+            </div>
+            <div class="dati col-4">
+                <app-top-assists [mostraMeno]="true" [id]="'140'"></app-top-assists>
+                <button class="btn btn-info" (click)="mostraAltro('topassists/','140')" >Mostra Altro...</button>
+            </div>
+        </div>
+                <!-- <div class="dati col-4">
                     <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella31">
                 
                              <ng-container matColumnDef="nome">
@@ -279,4 +298,4 @@
                         </table>
                         <button class="btn btn-info" [routerLink]="'/topassists/140'" >Mostra Altro...</button>
                     </div>
-            </div> 
+            </div>  -->

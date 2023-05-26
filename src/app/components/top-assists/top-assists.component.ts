@@ -13,7 +13,7 @@ import { IdcampionatoService } from 'src/app/services/idcampionato.service';
 export class TopAssistsComponent implements OnInit{
 
   loading:boolean = true
-  id!:string
+  @Input() id!:string
   season:string = "2022"
   nomeCampionato!:string;
   giocatori!:Giocatore[]
@@ -44,6 +44,7 @@ export class TopAssistsComponent implements OnInit{
         this.tagliaGiocatori()
       }
       this.datiTabella = new MatTableDataSource(this.giocatori)
+      this.loading = false
     }
   
   creaFakeSeason(){
@@ -63,6 +64,7 @@ export class TopAssistsComponent implements OnInit{
 //   this.giocatori = res.response
 //     console.log(this.giocatori)
 //     this.datiTabella = new MatTableDataSource(this.giocatori)
+// this.loading = false
 //   })
 // }
   }

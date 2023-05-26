@@ -13,20 +13,22 @@ import { IdcampionatoService } from 'src/app/services/idcampionato.service';
 export class TopScorersComponent implements OnInit{
 
   loading:boolean = true
-  id!:string
+  @Input() id!:string
   nomeCampionato!:string;
   giocatori!:Giocatore[]
   colonneMostrate:string[] = ['nome','squadra','goals']
   season: string = "2022"
   seasons!:string[]
   datiTabella: any;
-  goals: any;
   @Input() mostraMeno: boolean = false
   
   constructor(private api:ApiService, private route:ActivatedRoute, private idCampionato:IdcampionatoService){ }
     
     ngOnInit(){
-      this.id = this.idCampionato.id,
+      if(this.id == undefined){
+        this.id = this.idCampionato.id
+      }
+    
       this.season = this.idCampionato.season,
       this.creaFakeSeason(),
       this.creaTopScorer()
@@ -39,11 +41,15 @@ export class TopScorersComponent implements OnInit{
   }
 
   // creaTopScorer(){
-  //   this.api.getTopScorer().subscribe((res)=>{
+  //   this.api.getTopScorer(this.idCampionato.id).subscribe((res)=>{
   //     console.log(res)
   //   this.giocatori = res.response
   //     console.log(this.giocatori)
+  //     if(this.mostraMeno == true){
+  //             this.tagliaGiocatori()
+  //           }
   //     this.datiTabella = new MatTableDataSource(this.giocatori)
+  //     this.loading = false
   //         // this.goals.sort((a:any, b:any)=>a.total - b.total)
   //         // this.datiTabella = new MatTableDataSource(this.giocatori)
   //         // console.log(this.giocatori)
@@ -62,6 +68,7 @@ export class TopScorersComponent implements OnInit{
       this.tagliaGiocatori()
     }
     this.datiTabella = new MatTableDataSource(this.giocatori)
+    this.loading = false
 }
 
   tagliaGiocatori(){

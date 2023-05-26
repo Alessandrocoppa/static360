@@ -90,6 +90,7 @@ export class ClassificaComponent{
           this.squadre.sort((a, b)=>a.rank - b.rank)
           this.datiTabella = new MatTableDataSource(this.squadre)
           console.log(this.squadre)
+          this.loading = false
         }
         
 
@@ -105,6 +106,7 @@ export class ClassificaComponent{
   //         this.squadre.sort((a, b)=>a.rank - b.rank)
   //         this.datiTabella = new MatTableDataSource(this.squadre)
   //         console.log(this.squadre)
+  // this.loading = false
   //       })
   //       }
     

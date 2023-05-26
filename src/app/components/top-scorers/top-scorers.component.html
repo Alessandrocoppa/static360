@@ -5,7 +5,7 @@
 </div>
 
 
-<div>
+<div *ngIf="!loading">
         <table *ngIf="giocatori.length > 0" mat-table [dataSource]="datiTabella">
         
                  <ng-container matColumnDef="nome">
