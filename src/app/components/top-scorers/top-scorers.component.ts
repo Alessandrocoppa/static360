@@ -40,36 +40,36 @@ export class TopScorersComponent implements OnInit{
       this.creaTopScorer() 
   }
 
-  // creaTopScorer(){
-  //   this.api.getTopScorer(this.idCampionato.id).subscribe((res)=>{
-  //     console.log(res)
-  //   this.giocatori = res.response
-  //     console.log(this.giocatori)
-  //     if(this.mostraMeno == true){
-  //             this.tagliaGiocatori()
-  //           }
-  //     this.datiTabella = new MatTableDataSource(this.giocatori)
-  //     this.loading = false
-  //         // this.goals.sort((a:any, b:any)=>a.total - b.total)
-  //         // this.datiTabella = new MatTableDataSource(this.giocatori)
-  //         // console.log(this.giocatori)
-  //   })
-  // }
+  creaTopScorer(){
+    this.api.getTopScorer(this.idCampionato.id).subscribe((res)=>{
+      console.log(res)
+    this.giocatori = res.response
+      console.log(this.giocatori)
+      if(this.mostraMeno == true){
+              this.tagliaGiocatori()
+            }
+      this.datiTabella = new MatTableDataSource(this.giocatori)
+      this.loading = false
+          // this.goals.sort((a:any, b:any)=>a.total - b.total)
+          // this.datiTabella = new MatTableDataSource(this.giocatori)
+          // console.log(this.giocatori)
+    })
+  }
 
   creaFakeSeason(){
     this.seasons = this.api.getFakeSeason().response
     console.log(this.seasons)
   }
 
-  creaTopScorer(){
-  this.giocatori = this.api.getFakeScorer().response
-    console.log(this.giocatori)
-    if(this.mostraMeno == true){
-      this.tagliaGiocatori()
-    }
-    this.datiTabella = new MatTableDataSource(this.giocatori)
-    this.loading = false
-}
+//   creaTopScorer(){
+//   this.giocatori = this.api.getFakeScorer().response
+//     console.log(this.giocatori)
+//     if(this.mostraMeno == true){
+//       this.tagliaGiocatori()
+//     }
+//     this.datiTabella = new MatTableDataSource(this.giocatori)
+//     this.loading = false
+// }
 
   tagliaGiocatori(){
     this.giocatori = this.giocatori.slice(0,4)

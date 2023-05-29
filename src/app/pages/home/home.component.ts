@@ -34,33 +34,33 @@ export class HomeComponent {
   datiTabella22: any;
   datiTabella31: any;
   datiTabella32: any;
-  giocatoriTagliati: boolean = false;
+  
   
 
   constructor(private api:ApiService, private idCampionato:IdcampionatoService, private router:Router){  
     this.creaSerieA(),
-    // this.creaTopScorerIT(),
+    this.creaTopScorerIT(),
     this.creaTopAssistsIT(),
     this.creaPremier(),
     this.creaTopScorerEN(),
     this.creaTopAssistsEN(),
-    this.creaLiga(),
+    this.creaLiga()
     this.creaTopScorerSP(),
     this.creaTopAssistsSP()
     }
 
-    creaSerieA(){
+    // creaSerieA(){
     
-      this.classifica = this.api.getFakeSeriea().response[0].league
-            console.log(this.classifica)
+    //   this.classifica = this.api.getFakeSeriea().response[0].league
+    //         console.log(this.classifica)
         
-            this.squadre = this.classifica.standings[0]
-            this.squadre = this.squadre.slice(0,4)
-            this.squadre.sort((a, b)=>a.rank - b.rank)
-            this.datiTabella = new MatTableDataSource(this.squadre)
-            console.log(this.squadre)
-            this.loading[0] = false
-          }
+    //         this.squadre = this.classifica.standings[0]
+    //         this.squadre = this.squadre.slice(0,4)
+    //         this.squadre.sort((a, b)=>a.rank - b.rank)
+    //         this.datiTabella = new MatTableDataSource(this.squadre)
+    //         console.log(this.squadre)
+    //         this.loading[0] = false
+    //       }
 
           // creaTopScorerIT(){
           //   this.giocatori = this.api.getFakeScorer().response
@@ -71,48 +71,50 @@ export class HomeComponent {
 
           //   }
 
-          creaTopAssistsIT(){
-              this.giocatori = this.api.getFakeAssists().response
-                console.log(this.giocatori)
-                this.giocatori = this.giocatori.slice(0,4)
-                this.datiTabella12 = new MatTableDataSource(this.giocatori)
-                this.loading[2] = false
-              }
+          // creaTopAssistsIT(){
+          //     this.giocatori = this.api.getFakeAssists().response
+          //       console.log(this.giocatori)
+          //       this.giocatori = this.giocatori.slice(0,4)
+          //       this.datiTabella12 = new MatTableDataSource(this.giocatori)
+          //       this.loading[2] = false
+          //     }
 
-    // creaSerieA(){  
-    //   this.api.getStandings("135").subscribe((res)=>{
-    //      console.log(res)
-    //      this.classifica = res.response[0].league
-    //      console.log(this.classifica)
-    //      this.squadre = this.classifica.standings[0]
-    //      this.squadre = this.squadre.slice(0,4)
-    //      this.datiTabella = new MatTableDataSource(this.squadre)
-    //      this.squadre.sort((a, b)=>a.rank - b.rank)
-    //      this.datiTabella = new MatTableDataSource(this.squadre)
-    //      console.log(this.squadre)
-    //    })
-    //    }
+    creaSerieA(){  
+      this.api.getStandings("135").subscribe((res)=>{
+         console.log(res)
+         this.classifica = res.response[0].league
+         console.log(this.classifica)
+         this.squadre = this.classifica.standings[0]
+         this.squadre = this.squadre.slice(0,4)
+         this.datiTabella = new MatTableDataSource(this.squadre)
+         this.squadre.sort((a, b)=>a.rank - b.rank)
+         this.datiTabella = new MatTableDataSource(this.squadre)
+         console.log(this.squadre)
+       })
+       }
 
-    // creaTopScorerIT(){
-    //     this.api.getTopScorer("135").subscribe((res)=>{
-    //       console.log(res)
-    //     this.giocatori = res.response
-    //       console.log(this.giocatori)
-    //       this.datiTabella = new MatTableDataSource(this.giocatori)
-    //           // this.goals.sort((a:any, b:any)=>a.total - b.total)
-    //           // this.datiTabella = new MatTableDataSource(this.giocatori)
-    //           // console.log(this.giocatori)
-    //     })
-    //   }
+    creaTopScorerIT(){
+        this.api.getTopScorer("135").subscribe((res)=>{
+          console.log(res)
+        this.giocatori = res.response
+          console.log(this.giocatori)
+          this.giocatori = this.giocatori.slice(0,4)
+          this.datiTabella11 = new MatTableDataSource(this.giocatori)
+              // this.goals.sort((a:any, b:any)=>a.total - b.total)
+              // this.datiTabella = new MatTableDataSource(this.giocatori)
+              // console.log(this.giocatori)
+        })
+      }
 
-  //   creaTopAssistsIT(){
-//   this.api.getTopAssists().subscribe((res)=>{
-//     console.log(res)
-//   this.giocatori = res.response
-//     console.log(this.giocatori)
-//     this.datiTabella = new MatTableDataSource(this.giocatori)
-//   })
-// }
+    creaTopAssistsIT(){
+  this.api.getTopAssists("135").subscribe((res)=>{
+    console.log(res)
+  this.giocatori = res.response
+    console.log(this.giocatori)
+    this.giocatori = this.giocatori.slice(0,4)
+    this.datiTabella12 = new MatTableDataSource(this.giocatori)
+  })
+}
     
        creaPremier(){
     
@@ -192,13 +194,10 @@ export class HomeComponent {
               })
             }
             
-            tagliaGiocatori(){
-              this.giocatori = this.giocatori.slice(0,4)
-              this.giocatoriTagliati = true
-            }
 
             mostraAltro(rotta:string, id:string){
               this.idCampionato.id = id
+              console.log(id)
               this.router.navigate([rotta + id])
             }
 }

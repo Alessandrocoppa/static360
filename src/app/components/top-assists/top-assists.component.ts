@@ -37,15 +37,15 @@ export class TopAssistsComponent implements OnInit{
     this.creaTopAssists() 
 }
 
-  creaTopAssists(){
-    this.giocatori = this.api.getFakeAssists().response
-      console.log(this.giocatori)
-      if(this.mostraMeno == true){
-        this.tagliaGiocatori()
-      }
-      this.datiTabella = new MatTableDataSource(this.giocatori)
-      this.loading = false
-    }
+  // creaTopAssists(){
+  //   this.giocatori = this.api.getFakeAssists().response
+  //     console.log(this.giocatori)
+  //     if(this.mostraMeno == true){
+  //       this.tagliaGiocatori()
+  //     }
+  //     this.datiTabella = new MatTableDataSource(this.giocatori)
+  //     this.loading = false
+  //   }
   
   creaFakeSeason(){
       this.seasons = this.api.getFakeSeason().response
@@ -58,15 +58,15 @@ export class TopAssistsComponent implements OnInit{
     }
   
 
-//   creaTopAssists(){
-//   this.api.getTopAssists().subscribe((res)=>{
-//     console.log(res)
-//   this.giocatori = res.response
-//     console.log(this.giocatori)
-//     this.datiTabella = new MatTableDataSource(this.giocatori)
-// this.loading = false
-//   })
-// }
+  creaTopAssists(){
+  this.api.getTopAssists(this.idCampionato.id).subscribe((res)=>{
+    console.log(res)
+  this.giocatori = res.response
+    console.log(this.giocatori)
+    this.datiTabella = new MatTableDataSource(this.giocatori)
+this.loading = false
+  })
+}
   }
 
 
